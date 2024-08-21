@@ -44,6 +44,7 @@
         .hero {
             text-align: center;
             padding: 50px 0;
+            position: relative;
         }
 
         .hero img {
@@ -51,6 +52,29 @@
             height: auto;
             border-radius: 5px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .image-container {
+            position: relative;
+            display: inline-block;
+            margin: 20px;
+        }
+
+        .image-container img {
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .image-1 {
+            position: relative;
+            z-index: 1;
+        }
+
+        .image-2 {
+            position: absolute;
+            top: 20px; /* Adjust to overlap */
+            left: 20px; /* Adjust to overlap */
+            z-index: 0;
         }
 
         .content {
@@ -87,21 +111,7 @@
 </head>
 <body>
 
-    <!-- Header Section -->
-     <header>
-        <h1>Angela & Johnny</h1>
-        <nav>
-            <a href="index.html" class="active">Home</a>
-            <a href="schedule.html">Schedule</a>
-            <a href="travel.html">Travel</a>
-            <a href="faq.html">FAQs</a>
-        </nav>
-    </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <img src="your-image.jpg" alt="Angela & Johnny">
-    </section>
 
     <!-- Content Section -->
     <section class="content">
