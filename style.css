@@ -1,5 +1,5 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
@@ -7,18 +7,19 @@ body {
 }
 
 header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
     text-align: center;
-    background-color: #ff9999;
-    padding: 50px 0;
-    color: white;
 }
 
 nav ul {
     list-style-type: none;
     padding: 0;
+    margin: 0;
     display: flex;
     justify-content: center;
-    background-color: #333;
+    background-color: #444;
 }
 
 nav ul li {
@@ -26,27 +27,32 @@ nav ul li {
 }
 
 nav ul li a {
-    color: white;
+    color: #fff;
     text-decoration: none;
-    padding: 15px 0;
+    padding: 15px;
     display: block;
 }
 
 nav ul li a:hover {
-    background-color: #ff9999;
+    background-color: #555;
+}
+
+.hero {
+    background-image: url('your-image-url.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    padding: 100px 0;
 }
 
 section {
-    padding: 50px;
-    margin: 20px auto;
     max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
     background-color: white;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-h2 {
-    color: #ff9999;
 }
 
 footer {
