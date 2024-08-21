@@ -111,6 +111,50 @@
         <p id="countdown"></p>
     </section>
 
+    <section class="content">
+    <h2>RSVP</h2>
+    <p>Please let us know if you can join us on our special day!</p>
+    <form id="rsvp-form">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" required><br><br>
+        
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required><br><br>
+        
+        <label for="attending">Attending?</label><br>
+        <select id="attending" name="attending" required>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+        </select><br><br>
+        
+        <label for="guests">Number of Guests:</label><br>
+        <input type="number" id="guests" name="guests"><br><br>
+        
+        <label for="comments">Comments or Special Requests:</label><br>
+        <textarea id="comments" name="comments"></textarea><br><br>
+        
+        <input type="submit" value="Submit">
+    </form>
+    <p id="response-message"></p>
+</section>
+
+<script>
+    document.getElementById('rsvp-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        var formData = new FormData(this);
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'https://script.google.com/macros/s/AKfycbxuR0vWwWVAR8GOnPa9980y_lXaxFV6Qa_0xitMfdzizWs_cANdbqy3o54cc_rlHi73LQ/exec');
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                document.getElementById('response-message').innerHTML = "Thank you for your RSVP!";
+                document.getElementById('rsvp-form').reset();
+            }
+        };
+        xhr.send(formData);
+    });
+</script>
+    
     <script>
         // Countdown Timer
         const weddingDate = new Date("Sep 13, 2024 00:00:00").getTime();
