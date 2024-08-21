@@ -72,8 +72,8 @@
 
         .image-2 {
             position: absolute;
-            top: 20px; /* Adjust to overlap */
-            left: 20px; /* Adjust to overlap */
+            top: 20px;
+            left: 20px;
             z-index: 0;
         }
 
@@ -92,6 +92,68 @@
         .content p {
             font-size: 1.25rem;
             color: #555;
+        }
+
+        .rsvp-container {
+            max-width: 600px;
+            margin: 40px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .rsvp-container h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #1d3c6e;
+            text-align: center;
+        }
+
+        .rsvp-container label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .rsvp-container input[type="text"],
+        .rsvp-container input[type="email"],
+        .rsvp-container select,
+        .rsvp-container input[type="number"],
+        .rsvp-container textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .rsvp-container button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: #1d3c6e;
+            color: #fff;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .rsvp-container button:hover {
+            background-color: #162f54;
+        }
+
+        #response-message {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #1d3c6e;
+            margin-top: 20px;
         }
 
         footer {
@@ -138,50 +200,54 @@
         <p id="countdown"></p>
     </section>
 
+    <!-- RSVP Section -->
+    <section class="rsvp-container">
+        <h2>RSVP</h2>
+        <form id="rsvp-form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="attending">Will you attend?</label>
+            <select id="attending" name="attendance" required>
+                <option value="" disabled selected>Select an option</option>
+                <option value="yes">Yes, I will be there!</option>
+                <option value="no">Sorry, I can't make it.</option>
+            </select>
+            
+            <label for="guests">Number of Guests:</label>
+            <input type="number" id="guests" name="guests" min="0">
+            
+            <label for="comments">Comments or Special Requests:</label>
+            <textarea id="comments" name="comments"></textarea>
+            
+            <button type="submit">Submit</button>
+        </form>
+        <div id="response-message"></div>
+    </section>
 
-    <section class="content">
-    <h2>RSVP</h2>
-    <p>Please let us know if you can join us on our special day!</p>
-    <form id="rsvp-form">
-        <label for="name">Name:</label><br>
-        <input type="text" id="name" name="name" required><br><br>
-        
-        <label for="email">Email:</label><br>
-        <input type="email" id="email" name="email" required><br><br>
-        
-        <label for="attending">Attending?</label><br>
-        <select id="attending" name="attending" required>
-            <option value="Yes">Yes</option>
-            <option value="No">No</option>
-        </select><br><br>
-        
-        <label for="guests">Number of Guests:</label><br>
-        <input type="number" id="guests" name="guests"><br><br>
-        
-        <label for="comments">Comments or Special Requests:</label><br>
-        <textarea id="comments" name="comments"></textarea><br><br>
-        
-        <input type="submit" value="Submit">
-    </form>
-    <p id="response-message"></p>
-</section>
+    <footer>
+        <p>&copy; Angela & Johnny, 2024</p>
+    </footer>
 
-<script>
-    document.getElementById('rsvp-form').addEventListener('submit', function(e) {
-        e.preventDefault();
+    <script>
+        document.getElementById('rsvp-form').addEventListener('submit', function(e) {
+            e.preventDefault();
 
-        var formData = new FormData(this);
-        var xhr = new XMLHttpRequest();
-        xhr.open('POST', 'https://script.google.com/macros/s/AKfycbxRNJwe9mQqR1kWYPnbOS3N9TwwXI0mZ_8Aqmu3DhAZN7F0ix8DMXTYPLLsu7c-IO24zg/exec');
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState == 4 && xhr.status == 200) {
-                document.getElementById('response-message').innerHTML = "Thank you for your RSVP!";
-                document.getElementById('rsvp-form').reset();
-            }
-        };
-        xhr.send(formData);
-    });
-</script>
+            var formData = new FormData(this);
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', 'https://script.google.com/macros/s/AKfycbxRNJwe9mQqR1kWYPnbOS3N9TwwXI0mZ_8Aqmu3DhAZN7F0ix8DMXTYPLLsu7c-IO24zg/exec');
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    document.getElementById('response-message').innerHTML = "Thank you for your RSVP!";
+                    document.getElementById('rsvp-form').reset();
+                }
+            };
+            xhr.send(formData);
+        });
+    </script>
     
     <script>
         // Countdown Timer
